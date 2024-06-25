@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git checkout') {
+            steps {
+              git branch: 'main', url: 'https://github.com/Sushmagowdaaa/maven_Project.git' 
+            }
+        }
+        stage('build') {
+            steps {
+              bat 'mvn clean install'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'this is testing phase'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'this deploying phase'
+            }
+        }
+    }
+}
